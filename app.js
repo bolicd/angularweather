@@ -74,8 +74,15 @@ weatherApp.controller('forecastController',["$scope","$resource","$routeParams",
 
 weatherApp.directive("forecastDetail",function(){
 		return {
+			restrict: 'E',
 			templateUrl: "pages/forecastdetail.html",
-			replace:true
+			replace:true,
+			scope: {
+				day:"=",
+				convertDateFunction:"&",
+				convertTemperatureFunction:"&",
+				convertDateFormat:"@"
+			}
 		}
 });
 
