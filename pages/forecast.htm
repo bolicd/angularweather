@@ -1,20 +1,38 @@
+<div class="container">
 <h1>Forecast Page</h1>
-<h2> City: {{ city }} </h2>
+
+<div class="row">
+	<div class="col-md-8" style="background-color:red">
+		 City: {{ city }}
+	</div>
+	<div class="col-md-4" style="background-color:lightgray">
+		<!-- Find better solution for forming a href -->
+		<a ng-href="index.htm#{{linkPath}}?tempConvert=1" ng-class="{ 'bg-primary' : typeTemp==='1' }">Celsius</a>
+		<a ng-href="index.htm#{{linkPath}}?tempConvert=2" ng-class="{ 'bg-primary' : typeTemp==='2' }">Fahrenheit</a>
+		<a ng-href="index.htm#{{linkPath}}?tempConvert=3" ng-class="{ 'bg-primary' : typeTemp==='3' }">Kelvin</a>
+	</div>
+</div>
 <hr />
-<a href="#/forecast/2" ng-class="{ 'bg-primary': days === '2' }" >2</a>
+
+Days:
+<a href="#/forecast/2" ng-class="{ 'bg-primary': days === '2' }">2</a>
 <a href="#/forecast/4" ng-class="{ 'bg-primary': days === '4' }">4</a>
 <a href="#/forecast/7" ng-class="{ 'bg-primary': days === '7' }">7</a>
 
 <hr />
 
-<div ng-repeat="w in weatherResult.list">
-	<div class="row">
-	<div class="col-md-12">
-		<forecast-detail
-		 day="w"
-		 convert-temperature-function="convertToFahrenheit(dt)"
-		 convert-date-function="convertToDate(dt)"
-		 convert-date-format="MMM d,y"></forecast-detail>
+	<div ng-repeat="w in weatherResult.list">
+		<div class="row">
+		<div class="col-md-12">
+			<forecast-detail
+			 day="w"
+			 temperature-type="{{typeTemp}}"
+			 convert-temperature-function="convertTemperature(temp,type)"
+			 convert-date-function="convertToDate(dt)"
+			 convert-date-format="MMM d,y">
+			</forecast-detail>
+		</div>
+		</div>
 	</div>
-	</div>
+	
 </div>

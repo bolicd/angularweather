@@ -3,8 +3,9 @@
 	<h3 class="panel-title">{{ convertDateFunction({ dt:day.dt }) | date: convertDateFormat}}</h3>
 </div>
 	<div class="panel-body">
-		Daytime temperature: {{  convertTemperatureFunction({ dt:day.temp.day }) }} <br />
-		Minimum temperature: {{  convertTemperatureFunction({ dt:day.temp.min }) }}<br />
-		Maximum temperature: {{  convertTemperatureFunction({ dt:day.temp.max }) }} <br />
+		Type je: {{  temperatureType }}
+		Daytime temperature: {{  convertTemperatureFunction({ temp:day.temp.day,type:temperatureType }) }} <br />
+		Minimum temperature: {{  convertTemperatureFunction({ temp:day.temp.min,type:temperatureType }) }}<br />
+		Maximum temperature: {{  convertTemperatureFunction({ temp:day.temp.max,type:temperatureType }) }} <br />
 	</div>
 </div>	
