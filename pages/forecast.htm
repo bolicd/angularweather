@@ -2,24 +2,24 @@
 <h1>Forecast Page</h1>
 
 <div class="row">
-	<div class="col-md-8" style="background-color:red">
-		 City: {{ city }}
+	<div class="col-md-8" >
+		<h4>City: {{ city }}</h4>
 	</div>
-	<div class="col-md-4" style="background-color:lightgray">
-		<!-- Find better solution for forming a href -->
-		<a ng-href="index.htm#{{linkPath}}?tempConvert=1" ng-class="{ 'bg-primary' : typeTemp==='1' }">Celsius</a>
-		<a ng-href="index.htm#{{linkPath}}?tempConvert=2" ng-class="{ 'bg-primary' : typeTemp==='2' }">Fahrenheit</a>
-		<a ng-href="index.htm#{{linkPath}}?tempConvert=3" ng-class="{ 'bg-primary' : typeTemp==='3' }">Kelvin</a>
+	<div class="col-md-4">
+		<a ng-href="#{{linkPath}}?tempConvert=1" ng-class="{ 'active' : typeTemp==='1' }" class="btn btn-success" role="button">Celsius</a>
+		<a ng-href="#{{linkPath}}?tempConvert=2" ng-class="{ 'active' : typeTemp==='2' }" class="btn btn-success" role="button">Fahrenheit</a>
+		<a ng-href="#{{linkPath}}?tempConvert=3" ng-class="{ 'active' : typeTemp==='3' }" class="btn btn-success" role="button">Kelvin</a>
 	</div>
 </div>
-<hr />
 
-Days:
-<a href="#/forecast/2" ng-class="{ 'bg-primary': days === '2' }">2</a>
-<a href="#/forecast/4" ng-class="{ 'bg-primary': days === '4' }">4</a>
-<a href="#/forecast/7" ng-class="{ 'bg-primary': days === '7' }">7</a>
-
-<hr />
+<div class="row">
+	<div class="col-md-12">
+		<h4>Number of days:</h4>
+		<a ng-href="#/forecast/2?tempConvert={{typeTemp}}" ng-class="{ 'bg-primary': days === '2' }">2</a>
+		<a ng-href="#/forecast/4?tempConvert={{typeTemp}}" ng-class="{ 'bg-primary': days === '4' }">4</a>
+		<a ng-href="#/forecast/7?tempConvert={{typeTemp}}" ng-class="{ 'bg-primary': days === '7' }">7</a>
+	</div>
+</div>
 
 	<div ng-repeat="w in weatherResult.list">
 		<div class="row">
