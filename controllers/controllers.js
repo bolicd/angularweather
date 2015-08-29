@@ -21,18 +21,17 @@ weatherApp.controller('forecastController',["$scope","$resource","$routeParams",
 	$scope.days = $routeParams.days || '2';
 	$scope.typeTemp = $location.search().tempConvert || 1;
 	
-	console.log("TypeTemp is: " + $scope.typeTemp);
-	
 	$scope.linkPath =   $location.path() ;
 	$scope.queryParams = $location.search();
-	console.log("Path je: "+ $scope.linkPath);
-	console.log(" Query " + JSON.stringify($routeParams));
+	$scope.tempDesc="N/A";
+
 	
 	$scope.weatherAPI = $resource("http://api.openweathermap.org/data/2.5/forecast/daily",
 					{ callback: "JSON_CALLBACK"},
 					{ get: {method: "JSONP"} });
 
 	$scope.weatherResult = $scope.weatherAPI.get({ q: $scope.city, cnt: $scope.days } );
+	console.log($scope.weatherResult);
 	
 	$scope.convertToFahrenheit = function(degK) {
 		return Math.round((1.8 * (degK - 273))+ 32);
@@ -44,20 +43,22 @@ weatherApp.controller('forecastController',["$scope","$resource","$routeParams",
 		// 1 = Fahrenheit, 2 = Celsius, 3 = Kelvin
 		var returnValue = "";
 		
+		console.log(type);
+		
 		switch (type){
 			case '1':
 				// Fahrenheit
 				returnValue = Math.round((1.8 * (temp - 273))+ 32);
+				$scope.tempDesc="F";
 				break;
 			case '2':
 				// Celsius
 				returnValue = Math.round(temp - 273.15);
+				$scope.tempDesc="C";
 				break;
 			case '3':
-				return temp;
-				break;
-			default:
-				return temp;
+				$scope.tempDesc="K";
+				returnValue=temp;
 				break;
 		}
 		

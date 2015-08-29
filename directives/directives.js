@@ -10,7 +10,8 @@ weatherApp.directive("forecastDetail",function(){
 				convertDateFunction:"&",
 				convertTemperatureFunction:"&",
 				convertDateFormat:"@",
-				temperatureType:"@"
+				temperatureType:"@",
+				tempDescription:"@"
 			}
 		}
 });

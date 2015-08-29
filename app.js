@@ -30,7 +30,7 @@ weatherApp.config( function($routeProvider){
 // SERVICE
 weatherApp.service('forecastService', function(){
 	
-	this.city = "Some City";
+	this.city = "Sarajevo";
 	
 });
 

@@ -6,8 +6,8 @@
 		<h4>City: {{ city }}</h4>
 	</div>
 	<div class="col-md-4">
-		<a ng-href="#{{linkPath}}?tempConvert=1" ng-class="{ 'active' : typeTemp==='1' }" class="btn btn-success" role="button">Celsius</a>
-		<a ng-href="#{{linkPath}}?tempConvert=2" ng-class="{ 'active' : typeTemp==='2' }" class="btn btn-success" role="button">Fahrenheit</a>
+		<a ng-href="#{{linkPath}}?tempConvert=1" ng-class="{ 'active' : typeTemp==='1' }" class="btn btn-success" role="button">Fahrenheit</a>
+		<a ng-href="#{{linkPath}}?tempConvert=2" ng-class="{ 'active' : typeTemp==='2' }" class="btn btn-success" role="button">Celsius</a>
 		<a ng-href="#{{linkPath}}?tempConvert=3" ng-class="{ 'active' : typeTemp==='3' }" class="btn btn-success" role="button">Kelvin</a>
 	</div>
 </div>
@@ -23,16 +23,19 @@
 
 	<div ng-repeat="w in weatherResult.list">
 		<div class="row">
-		<div class="col-md-12">
-			<forecast-detail
-			 day="w"
-			 temperature-type="{{typeTemp}}"
-			 convert-temperature-function="convertTemperature(temp,type)"
-			 convert-date-function="convertToDate(dt)"
-			 convert-date-format="MMM d,y">
-			</forecast-detail>
+			<div class="col-md-12">
+				<forecast-detail
+				 day="w"
+				 temperature-type="{{typeTemp}}"
+				 convert-temperature-function="convertTemperature(temp,type)"
+				 convert-date-function="convertToDate(dt)"
+				 convert-date-format="MMM d,y"
+				 temp-description="{{tempDesc}}">
+				</forecast-detail>
+			</div>
 		</div>
-		</div>
+	
 	</div>
+	
 	
 </div>
